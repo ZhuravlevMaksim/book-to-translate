@@ -1,0 +1,27 @@
+{
+  "manifest_version": 1,
+  "name": "book-to-translate",
+  "version": "1.0",
+  "description": "Parse epub book content and send it to translator paragraph by paragraph",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+  "applications": {
+    "gecko": {
+      "id": "maks723@yandex.ru",
+      "strict_min_version": "55.0"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "contextMenus"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": "icons/border-48.png"
+  }
+}

@@ -9,15 +9,15 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "maks723@yandex.ru",
-      "strict_min_version": "55.0"
+      "strict_min_version": "56.0"
     }
   },
   "permissions": [
     "storage",
+    "unlimitedStorage",
     "activeTab",
     "contextMenus",
-    "tabs",
-    "<all_urls>"
+    "tabs"
   ],
   "background": {
     "scripts": [
@@ -27,6 +27,6 @@
   "browser_action": {
     "default_icon": "icons/border-48.png",
     "default_title": "Book to translate",
-    "default_popup": "popup/index.html"
+    "default_popup": "popup/popup.html"
   }
 }

@@ -6,3 +6,7 @@ html {
 .load_book{
     cursor: pointer;
 }
+
+.load_book:hover{
+    background-color: lightgrey;
+}

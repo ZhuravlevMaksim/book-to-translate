@@ -19,12 +19,14 @@ dispatch.setAttribute("id", "dispatch")
 dispatch.setAttribute("type", "checkbox")
 
 
-control.appendChild(prev)
-control.appendChild(page)
-control.appendChild(next)
 control.appendChild(dispatch)
+control.appendChild(prev)
+control.appendChild(next)
+control.appendChild(page)
 
-control.style.cssText += 'color:red;background-color:yellow;width:200px;position:absolute;top:0;right:0;z-index:999';
+prev.style.cssText += 'margin-left:5px';
+page.style.cssText += 'width:60px;margin-left:5px';
+control.style.cssText += 'position:absolute;display:flex;margin:1rem;bottom:0;right:0;z-index:999';
 
 const state = new Proxy({page: 0}, {
     set: function (target, key, value) {

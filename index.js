@@ -2,6 +2,7 @@ const control = document.createElement("div")
 const prev = document.createElement("button")
 const page = document.createElement("input")
 const next = document.createElement("button")
+const dispatch = document.createElement("input")
 
 control.setAttribute("id", "book-control");
 
@@ -14,9 +15,14 @@ page.setAttribute("type", "number");
 next.setAttribute("id", "next");
 next.innerText = "next"
 
+dispatch.setAttribute("id", "dispatch")
+dispatch.setAttribute("type", "checkbox")
+
+
 control.appendChild(prev)
 control.appendChild(page)
 control.appendChild(next)
+control.appendChild(dispatch)
 
 control.style.cssText += 'color:red;background-color:yellow;width:200px;position:absolute;top:0;right:0;z-index:999';
 
@@ -30,11 +36,13 @@ const state = new Proxy({page: 0}, {
         node.value = bookText[value]
         node.focus()
 
-        node.dispatchEvent(new Event('input', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-        }))
+        if (dispatch.checked){
+            node.dispatchEvent(new Event('input', {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            }))
+        }
 
         return true;
     }

@@ -30,6 +30,12 @@ const state = new Proxy({page: 0}, {
         node.value = bookText[value]
         node.focus()
 
+        node.dispatchEvent(new Event('input', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        }))
+
         return true;
     }
 })

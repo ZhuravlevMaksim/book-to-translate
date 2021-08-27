@@ -26,7 +26,7 @@ control.appendChild(page)
 
 prev.style.cssText += 'margin-left:5px';
 page.style.cssText += 'width:60px;margin-left:5px';
-control.style.cssText += 'position:absolute;display:flex;margin:1rem;bottom:0;right:0;z-index:999';
+control.style.cssText += 'position:fixed;display:flex;margin:1rem;bottom:0;right:0;z-index:999';
 
 const state = new Proxy({page: 0}, {
     set: function (target, key, value) {
@@ -54,6 +54,15 @@ page.addEventListener('change', e => state.page = parseInt(e.target.value, 10))
 prev.addEventListener('click', e => --state.page)
 next.addEventListener('click', e => ++state.page)
 
+document.addEventListener("keydown", e => {
+    if (e.key === 'ArrowLeft'){
+        prev.click()
+    }
+    if (e.key === 'ArrowRight'){
+        next.click()
+    }
+})
+
 
 let bookText = []
 
@@ -65,4 +74,4 @@ books.then((results) => {
 }, e => console.error(e));
 
 
-document.getElementsByTagName("body")[0].appendChild(control)
+document.getElementsByTagName("html")[0].appendChild(control)

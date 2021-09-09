@@ -33,18 +33,9 @@ const state = new Proxy({page: 0}, {
         target[key] = value
         page.value = value
 
-        const node = document.getElementsByTagName("textarea")[0]
+        updateTranslateInput(bookText[value])
 
-        node.value = bookText[value]
-        node.focus()
-
-        if (dispatch.checked){
-            node.dispatchEvent(new Event('input', {
-                view: window,
-                bubbles: true,
-                cancelable: true
-            }))
-        }
+        browser.storage.local.set({'page': state.page});
 
         return true;
     }
@@ -53,12 +44,13 @@ const state = new Proxy({page: 0}, {
 page.addEventListener('change', e => state.page = parseInt(e.target.value, 10))
 prev.addEventListener('click', e => --state.page)
 next.addEventListener('click', e => ++state.page)
+dispatch.addEventListener('change', e => updateTranslateInput(bookText[state.page]))
 
 document.addEventListener("keydown", e => {
-    if (e.key === 'ArrowLeft'){
+    if (e.key === 'ArrowLeft') {
         prev.click()
     }
-    if (e.key === 'ArrowRight'){
+    if (e.key === 'ArrowRight') {
         next.click()
     }
 })
@@ -68,10 +60,29 @@ let bookText = []
 
 const books = browser.storage.local.get(null);
 books.then((results) => {
-    Object.keys(results).forEach((e, i) => {
-        bookText = results[e]
+    Object.keys(results).filter(key => key !== 'page').forEach((key, i) => {
+        bookText = results[key]
+        browser.storage.local.get('page').then(({page}) => state.page = page)
     })
 }, e => console.error(e));
 
 
 document.getElementsByTagName("html")[0].appendChild(control)
+
+function updateTranslateInput(text) {
+    const node = document.getElementsByTagName("textarea")[0]
+
+    if (text) {
+        node.value = text
+    }
+    node.focus()
+
+    if (dispatch.checked) {
+        node.dispatchEvent(new Event('input', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        }))
+    }
+}
+

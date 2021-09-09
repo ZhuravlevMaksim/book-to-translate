@@ -55,7 +55,7 @@ document.addEventListener("keydown", e => {
     }
 })
 
-
+//todo: add book select with its own progress saved page
 let bookText = []
 
 const books = browser.storage.local.get(null);

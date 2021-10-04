@@ -23,7 +23,9 @@ document.getElementById("input").addEventListener("change", async function (e) {
     browser.storage.local.clear();
     browser.storage.local.set({[this.files[0].name]: splitBook});
 
-    alert('done')
+    browser.tabs.getCurrent(function(tab) {
+        browser.tabs.remove(tab.id, function() { });
+    });
 
 }, false);
 

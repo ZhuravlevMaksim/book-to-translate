@@ -63,6 +63,7 @@ books.then((results) => {
     Object.keys(results).filter(key => key !== 'page').forEach((key, i) => {
         bookText = results[key]
         browser.storage.local.get('page').then(({page}) => state.page = page)
+        page.setAttribute("title", results[key].length);
     })
 }, e => console.error(e));
 

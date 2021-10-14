@@ -24,7 +24,7 @@ control.appendChild(prev)
 control.appendChild(next)
 control.appendChild(page)
 
-prev.style.cssText += 'margin-left:5px';
+prev.style.cssText += 'margin-left:5px;margin-right:5px';
 page.style.cssText += 'width:60px;margin-left:5px';
 control.style.cssText += 'position:fixed;display:flex;margin:1rem;bottom:0;right:0;z-index:999';
 

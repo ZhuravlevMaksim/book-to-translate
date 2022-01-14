@@ -26,7 +26,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://translate.google.com/*", "https://translate.yandex.uz/*"],
+      "matches": ["https://translate.google.com/*", "https://translate.yandex.uz/*", "https://www.deepl.com/*"],
       "js": ["index.js"]
     }
   ],

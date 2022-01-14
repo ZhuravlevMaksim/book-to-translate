@@ -16,5 +16,9 @@ document.addEventListener("click", (e) => {
             browser.tabs.create({url: "https://translate.yandex.uz"})
             break
         }
+        case 'open_deepl': {
+            browser.tabs.create({url: "https://www.deepl.com/translator#en/ru"})
+            break
+        }
     }
 })

@@ -9,7 +9,9 @@ document.getElementById("input").addEventListener("change", async function (e) {
         const content = await item.load(book.load.bind(book))
 
         for (let result of content.innerHTML.matchAll(/<p[^>]*>(.*?|[\s\S]*?)<\/p>/g)) {
-            const p = result[1].replaceAll(/\r?\n|\r/g, ' ').replaceAll(/<.+?>/g, '')
+            const p = result[1]
+                .replaceAll(/\r?\n|\r/g, ' ')
+                .replaceAll(/<.+?>/g, '')
 
             if (p.length > 1) {
                 splitBook.push(p)

@@ -71,7 +71,7 @@ books.then((results) => {
 document.getElementsByTagName("html")[0].appendChild(control)
 
 function updateTranslateInput(text) {
-    const node = document.getElementsByTagName("textarea")[0]
+    const node = document.getElementsByTagName( document.location.includes("deepl") ? "d-textarea" : "textarea")[0]
 
     if (text) {
         node.value = text
